@@ -12,17 +12,31 @@
                 Console.WriteLine("2 for Fahrenheit to Celsius");
                 Console.WriteLine("3 for Exit the Program");
                 Console.Write("Choose a conversion direction: ");
-                string choice = Console.ReadLine();
+                if (!int.TryParse(Console.ReadLine(), out int userInput)) 
+                    {
+                        System.Console.WriteLine("Invalid input! Please enter a valid integer");
+                        continue;
+                    }
 
-                switch(choice) 
+                var temperatureConverted = new Temperature();
+
+                switch(userInput) 
                 {
-                    case "1":
-                        Console.WriteLine("Hello 1");
+                    case 1:
+                        Console.WriteLine("Celsius to Fahrenheit");
+                        Console.Write("Insert the temperature to convert: ");
+                        if (!int.TryParse(Console.ReadLine(), out int celsius)) 
+                            {
+                                Console.WriteLine("Invalid input! Please enter a valid integer");
+                                continue;
+                            }
+                        var fahrenheit = temperatureConverted.CelsiusToFahrenheit(celsius);
+                        Console.WriteLine($"{celsius}°C is equal to {fahrenheit}°F");
                         break;
-                    case "2":
+                    case 2:
                         Console.WriteLine("Hello 2");
                         break;
-                    case "3":
+                    case 3:
                         Console.WriteLine("Exiting the program...");
                         exit = true;
                         break;
@@ -31,7 +45,6 @@
                         break;
                 }
             }
-
         }
     }
 }
