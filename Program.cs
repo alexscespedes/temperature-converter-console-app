@@ -23,15 +23,30 @@
                 switch(userInput) 
                 {
                     case 1:
+                    bool confirmation = true;
+                        do
+                        {
                         Console.WriteLine("Celsius to Fahrenheit");
                         Console.Write("Insert the temperature to convert: ");
                         if (!int.TryParse(Console.ReadLine(), out int celsius)) 
                             {
                                 Console.WriteLine("Invalid input! Please enter a valid integer");
                                 continue;
-                            }
+                            } 
                         var fahrenheit = temperatureConverted.CelsiusToFahrenheit(celsius);
                         Console.WriteLine($"{celsius}°C is equal to {fahrenheit}°F");
+                        Console.Write("Do you want to perform another another conversion (Y/N): ");
+                        string userConfirmation = Console.ReadLine();
+                        if (userConfirmation == "N" || userConfirmation == "No")
+                        {
+                            confirmation = false;
+                        }
+                        else if (userConfirmation != "Y" || userConfirmation != "Yes")
+                        {
+                            Console.WriteLine("Invalid input!");
+                            break;
+                        }
+                        } while (confirmation);
                         break;
                     case 2:
                         Console.WriteLine("Hello 2");
