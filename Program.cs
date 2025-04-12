@@ -5,6 +5,7 @@
         static void Main(string[] args)
         {
             bool exit = false;
+            bool confirmation = true;
             while(!exit) 
             {
                 Console.WriteLine("Welcome to the Temperature Converter Console App console that converts temperatures between Fahrenheit and Celsius");
@@ -23,7 +24,6 @@
                 switch(userInput) 
                 {
                     case 1:
-                    bool confirmation = true;
                         do
                         {
                         Console.WriteLine("Celsius to Fahrenheit");
@@ -31,7 +31,7 @@
                         if (!int.TryParse(Console.ReadLine(), out int celsius)) 
                             {
                                 Console.WriteLine("Invalid input! Please enter a valid integer");
-                                continue;
+                                break;
                             } 
                         var fahrenheit = temperatureConverted.CelsiusToFahrenheit(celsius);
                         Console.WriteLine($"{celsius}°C is equal to {fahrenheit}°F");
@@ -49,10 +49,32 @@
                         } while (confirmation);
                         break;
                     case 2:
-                        Console.WriteLine("Hello 2");
+                        do
+                        {
+                        Console.WriteLine("Fahrenheit to Celsius");
+                        Console.Write("Insert the temperature to convert: ");
+                        if (!int.TryParse(Console.ReadLine(), out int fahrenheit)) 
+                            {
+                                Console.WriteLine("Invalid input! Please enter a valid integer");
+                                break;
+                            }
+                        var celsius = temperatureConverted.FahrenheitToCelsius(fahrenheit);
+                        Console.WriteLine($"{fahrenheit}°C is equal to {celsius}°F");
+                        Console.Write("Do you want to perform another another conversion (Y/N): ");
+                        string userConfirmation = Console.ReadLine();
+                        if (userConfirmation == "N" || userConfirmation == "No")
+                        {
+                            confirmation = false;
+                        }
+                        else if (userConfirmation != "Y" || userConfirmation != "Yes")
+                        {
+                            Console.WriteLine("Invalid input!");
+                            break;
+                        }
+                        } while (confirmation);
                         break;
                     case 3:
-                        Console.WriteLine("Exiting the program...");
+                        Console.WriteLine("Goodbye!");
                         exit = true;
                         break;
                     default:
