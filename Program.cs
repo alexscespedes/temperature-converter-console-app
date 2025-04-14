@@ -26,51 +26,60 @@
                     case 1:
                         do
                         {
-                        Console.WriteLine("Celsius to Fahrenheit");
-                        Console.Write("Insert the temperature to convert: ");
-                        if (!int.TryParse(Console.ReadLine(), out int celsius)) 
+                            Console.WriteLine("Celsius to Fahrenheit");
+                            Console.Write("Insert the temperature to convert: ");
+                            if (!int.TryParse(Console.ReadLine(), out int celsius)) 
+                                {
+                                    Console.WriteLine("Invalid input! Please enter a valid integer");
+                                    break;
+                                } 
+                            var fahrenheit = temperatureConverted.CelsiusToFahrenheit(celsius);
+                            Console.WriteLine($"{celsius}°C is equal to {fahrenheit}°F");
+                            Console.Write("Do you want to perform another conversion (Y/N): ");
+                            string userConfirmation = Console.ReadLine()?.Trim().ToUpper();
+                            
+                            if (userConfirmation == "N" || userConfirmation == "NO")
                             {
-                                Console.WriteLine("Invalid input! Please enter a valid integer");
-                                break;
-                            } 
-                        var fahrenheit = temperatureConverted.CelsiusToFahrenheit(celsius);
-                        Console.WriteLine($"{celsius}°C is equal to {fahrenheit}°F");
-                        Console.Write("Do you want to perform another another conversion (Y/N): ");
-                        string userConfirmation = Console.ReadLine();
-                        if (userConfirmation == "N" || userConfirmation == "No")
-                        {
-                            confirmation = false;
-                        }
-                        else if (userConfirmation != "Y" || userConfirmation != "Yes")
-                        {
-                            Console.WriteLine("Invalid input!");
-                            break;
-                        }
+                                confirmation = false;
+                            }
+                            else if (userConfirmation == "Y" || userConfirmation == "YES")
+                            {
+                                confirmation = true;
+                            }
+                            else 
+                            {
+                                Console.WriteLine("Invalid input! Please enter 'Y' for Yes or N for No.");
+                                confirmation = true;
+                            }
                         } while (confirmation);
                         break;
                     case 2:
                         do
                         {
-                        Console.WriteLine("Fahrenheit to Celsius");
-                        Console.Write("Insert the temperature to convert: ");
-                        if (!int.TryParse(Console.ReadLine(), out int fahrenheit)) 
+                            Console.WriteLine("Fahrenheit to Celsius");
+                            Console.Write("Insert the temperature to convert: ");
+                            if (!int.TryParse(Console.ReadLine(), out int fahrenheit)) 
+                                {
+                                    Console.WriteLine("Invalid input! Please enter a valid integer");
+                                    break;
+                                }
+                            var celsius = temperatureConverted.FahrenheitToCelsius(fahrenheit);
+                            Console.WriteLine($"{fahrenheit}°F is equal to {celsius}°C");
+                            Console.Write("Do you want to perform another another conversion (Y/N): ");
+                            string userConfirmation = Console.ReadLine()?.Trim().ToUpper();
+
+                            if (userConfirmation == "N" || userConfirmation == "NO")
                             {
-                                Console.WriteLine("Invalid input! Please enter a valid integer");
-                                break;
+                                confirmation = false;
                             }
-                        var celsius = temperatureConverted.FahrenheitToCelsius(fahrenheit);
-                        Console.WriteLine($"{fahrenheit}°C is equal to {celsius}°F");
-                        Console.Write("Do you want to perform another another conversion (Y/N): ");
-                        string userConfirmation = Console.ReadLine();
-                        if (userConfirmation == "N" || userConfirmation == "No")
-                        {
-                            confirmation = false;
-                        }
-                        else if (userConfirmation != "Y" || userConfirmation != "Yes")
-                        {
-                            Console.WriteLine("Invalid input!");
-                            break;
-                        }
+                            else if (userConfirmation == "Y" || userConfirmation == "YES")
+                            {
+                                confirmation = true;
+                            }
+                            else {
+                                Console.WriteLine("Invalid input! Please enter 'Y' for Yes or N for No.");
+                                confirmation = true;
+                            }
                         } while (confirmation);
                         break;
                     case 3:
